@@ -1,6 +1,6 @@
 {
-  "name": "@ixds/moscatron",
-  "version": "1.0.0",
+  "name": "moscatron",
+  "version": "0.1.0",
   "description": "mosca broker meets electron",
   "main": "index.js",
   "dependencies": {
@@ -19,7 +19,7 @@
     "ts-node": "^7.0.1"
   },
   "engines": {
-    "node": ">=10.0.0 < 10.13.0"
+    "node": ">=8.0.0 < 8.100.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -32,7 +32,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fabianmoronzirfas/moscatron/issues"
   },
