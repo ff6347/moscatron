@@ -1,0 +1,35 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>moscatron</title>
+  <meta name="description" content="something">
+  <meta name="author" content="me">
+
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div id="info">
+    <h1>Hello moscatron</h1>
+    <p>
+      We are using Node.js <script>document.write(process.versions.node)</script>,
+      Chromium <script>document.write(process.versions.chrome)</script>,
+      and Electron <script>document.write(process.versions.electron)</script>
+    </p>
+  </div>
+  <script>
+        require('./renderer.js')
+  </script>
+  <div>
+    <!-- <button id="connect">Connect</button> -->
+    <!-- <button id="disconnect">Disconnect</button> -->
+  </div>
+</body>
+</html>
