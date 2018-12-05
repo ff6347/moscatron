@@ -9,6 +9,14 @@
 <title>moscatron</title>
   <meta name="description" content="something">
   <meta name="author" content="me">
+  <script src="./libs/react.development.js"></script>
+  <script src="./libs/react-dom.development.js"></script>
+  <script>
+    module = {exports:{}}; exports = {};
+    window.require = function(name) { return window[name]; };
+    window['react'] = window['React'];
+    window['react-dom'] = window['ReactDOM'];
+  </script>
 
 
   <!--[if lt IE 9]>
@@ -24,6 +32,8 @@
       and Electron <script>document.write(process.versions.electron)</script>
     </p>
   </div>
+  <div id="main"></div>
+  <script src="app.js"></script>
   <script>
         require('./renderer.js')
   </script>
