@@ -4,22 +4,33 @@ let win: BrowserWindow | null = null;
 import * as path from 'path';
 import * as  url from 'url';
 
-
+// console.log(`NODE ENV: ${process.env.NODE_ENV}`);
+const devRootPath = path.resolve(__dirname, '../interface/index.html');
+const prodRootPath = path.join(app.getAppPath(), 'interface', 'index.html');
+const webRoot = (process.env.NODE_ENV === 'development') ? devRootPath : prodRootPath;
 // tslint:disable-next-line:no-var-requires
-require('electron-reload')(path.join(app.getAppPath(), 'public'));
+require('electron-reload')(webRoot);
 
 const createWindow = () => {
   win = new BrowserWindow({
     darkTheme: true,
   });
-  win.loadURL(
-    url.format({
-      pathname: path.join(app.getAppPath(), 'public', 'index.html'),
-      protocol: 'file:',
-      slashes: true,
-    }),
-  );
+  const startUrl = url.format({
+    pathname: webRoot,
+    protocol: 'file:',
+    slashes: true,
+  });
+
+  win.loadURL(startUrl);
+  let extensionPath = '';
+  if (process.env.NODE_ENV === 'development') {
+    extensionPath = path.resolve(__dirname, '../dev-tools/react');
+  } else {
+    extensionPath = path.join(app.getAppPath(), 'dev-tools', 'react');
+  }
+  // BrowserWindow.addDevToolsExtension(extensionPath);
   win.webContents.openDevTools();
+
   const mqttServer = broker();
   // console.log(mqttServer.opts);
   // Emitted when the window is closed.
@@ -73,6 +84,7 @@ ${packet.topic} ${packet.payload.toString('utf8')}`;
       });
     }
   });
+
   win.on('closed', () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time

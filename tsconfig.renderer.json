@@ -2,7 +2,7 @@
   // compiler (tsc) and makes VSCode recognize this folder as a TS project,
   // enabling the VSCode build tasks "tsc: build" and "tsc: watch".
   "compilerOptions": {
-    "target": "es5",            // Compatible with older browsers
+    "target": "es2018",            // Compatible with older browsers
     "module": "commonjs",            // Compatible with both Node.js and browser
     "moduleResolution": "node", // Tell tsc to look in node_modules for modules
     "sourceMap": true,          // Whether to create *.js.map files
@@ -12,9 +12,9 @@
     "esModuleInterop": true,     // CommonJS import behavior similar to Babel/mjs
     "declaration": false,
     // "outFile": "public/app.js",
-    "outDir": "public/"
+    "outDir": "interface/"
   },
-  "files":["src/App.tsx"],
-  // "include": ["src/App.tsx"],
+  "files":["src-renderer/App.tsx"],
+  "include": ["src-renderer/components/*.tsx"],
   "exclude": ["node_modules"]
 }
