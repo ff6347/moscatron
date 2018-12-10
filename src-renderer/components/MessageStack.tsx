@@ -1,16 +1,20 @@
 import * as React from 'react';
-import {IState} from '../app';
-
-class MessageStack extends React.Component<{messages: any}, IState> {
-  /**
-   * render
-   */
+import {IMessage} from '../app';
+import Message from './Message';
+export interface IMessageStackProps {
+  messages?: IMessage[];
+}
+class MessageStack extends React.Component<IMessageStackProps, {}> {
   public render() {
-    return (
-      <div className="MessageStack">
-        {this.state}
+    if (this.props.messages === undefined) {
+      return <div className="message-stack"></div>;
+    } else {
+      return (
+      <div className="message-stack">
+        {this.props.messages.slice(0).reverse().map((ele) => <Message message={ele} />)}
       </div>
-    );
+      );
+    }
   }
 }
 

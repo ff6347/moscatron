@@ -76,10 +76,27 @@ const createWindow = () => {
 
       mqttServer.on('published', (packet, client) => {
         if (client !== undefined && win !== null) {
-          const msg = `Client ${client.id}
-published a message on topic
-${packet.topic} ${packet.payload.toString('utf8')}`;
-          win.webContents.send('published', msg);
+          // const msg = `Client ${client.id}
+// published a message on topic
+// ${packet.topic} ${packet.payload.toString('utf8')}`;
+
+          let payload = null;
+          if (Buffer.isBuffer(packet.payload)) {
+            payload = packet.payload.toString('utf8');
+            try {
+              payload = JSON.parse(payload);
+            } catch (e) {
+              // tslint:disable-next-line:no-console
+              console.error(e);
+            }
+          }
+          const obj = {
+            clientId: client.id,
+            payload,
+            topic: packet.topic,
+          };
+          console.log('sending to frontend');
+          win.webContents.send('published', obj);
         }
       });
     }

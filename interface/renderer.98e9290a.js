@@ -1,4 +1,4 @@
-process.env.HMR_PORT=58109;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
+process.env.HMR_PORT=64752;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
 // [ module function, map of requires ]
 //
 // map of requires is short require name -> numeric require
@@ -125,11 +125,11 @@ electron_1.ipcRenderer.on('broker', function (event, args) {
     node.innerText = "MQTT broker listening on localhost:" + args.port;
     infoEle.appendChild(node);
   }
-});
-electron_1.ipcRenderer.on('published', function (event, args) {
-  // tslint:disable-next-line:no-console
-  console.log(event, args);
-});
+}); // ipcRenderer.on('published', (event: any, args: any) => {
+//   // tslint:disable-next-line:no-console
+//   // console.log(event, args);
+// });
+
 electron_1.ipcRenderer.on('subscribed', function (event, args) {
   // tslint:disable-next-line:no-console
   console.log(event, args);
