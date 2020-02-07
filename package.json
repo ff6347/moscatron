@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@types/node": "10.17.14",
-    "cz-conventional-changelog": "3.0.2",
+    "cz-conventional-changelog": "3.1.0",
     "electron": "8.0.0",
     "spectron": "10.0.1",
     "ts-node": "8.6.2"
